@@ -9,10 +9,22 @@ import android.content.SharedPreferences;
 public class MyApplication extends Application {
 
     public static SharedPreferences config;
+    private static SharedPreferences.Editor editor;
 
     @Override
     public void onCreate() {
         super.onCreate();
         config = getSharedPreferences("config", MODE_PRIVATE);
+        editor = config.edit();
+    }
+
+    public static void setConfigValue(String key,String value){
+        editor.putString(key,value);
+        editor.commit();
+    }
+
+    public static String getConfigValue(String key,String defValue){
+        String value = config.getString(key, defValue);
+        return value;
     }
 }
