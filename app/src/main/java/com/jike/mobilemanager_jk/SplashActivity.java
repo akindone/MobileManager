@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jike.application.MyApplication;
 import com.jike.utils.HttpUtils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -109,12 +110,16 @@ public class SplashActivity extends Activity {
         TextView tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
         pb_splash_download = (ProgressBar) findViewById(R.id.pb_splash_download);
 
-        tv_splash_version.setText(appVersionName);
-
-        getLatestVersion();
+        tv_splash_version.setText("手机卫士 版本号：" + appVersionName);
+        boolean getTelLocation = MyApplication.config.getBoolean("autoUpdate", true);
+        if (getTelLocation) {getLatestVersion();}
+        else gotoHome();
     }
 
     private void ifUpdate(final String[] info) {
+        String sname = SplashActivity.this.getClass().getName();
+        String name = this.getClass().getName();
+        Log.e(TAG,"ifUpdate  THIS'S CLASSNAME"+sname+","+name);
         Log.e(TAG, "ifUpdate");
         new AlertDialog.Builder(SplashActivity.this)
                .setTitle("出新版本啦")
@@ -144,7 +149,7 @@ public class SplashActivity extends Activity {
                 super.run();
                 Message message = handler.obtainMessage();
                 try {
-                    Thread.currentThread().sleep(5000);
+                    Thread.currentThread().sleep(2000);
                     message.what=MSG_WAIT_TIMEOUT;
                 } catch (InterruptedException e) {
                     e.printStackTrace();

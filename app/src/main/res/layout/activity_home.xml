@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.jike.mobilemanager_jk.Home">
+    <TextView
+        style="@style/title_activity"
+        android:text="功能列表" />
+    <com.jike.view.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="欢迎使用720度安全卫士，保障你每天的手机安全，防止流氓软件对您的骚扰，感谢您的使用。欢迎提供改进建议"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="欢迎使用720度安全卫士，保障你每天的手机安全，防止流氓软件对您的骚扰，感谢您的使用。欢迎提供改进建议"
+        android:singleLine="true"
+        android:id="@+id/tv_home_welcome"
+        android:ellipsize="marquee"
+        />-->
 
-</RelativeLayout>
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gv_home_funcs">
+
+    </GridView>
+
+</LinearLayout>

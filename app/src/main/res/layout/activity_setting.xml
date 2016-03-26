@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:settingitem="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jike.mobilemanager_jk.SettingActivity">
+    <TextView
+        style="@style/title_activity"
+        android:text="设置中心" />
+
+    <com.jike.view.SettingItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        settingitem:itemName="自动更新"
+        settingitem:itemStatus_on="自动更新开启"
+        settingitem:itemStatus_off="自动更新关闭"
+        settingitem:sf_key="autoUpdate"/>
+
+    <com.jike.view.SettingItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        settingitem:itemName="号码归属地"
+        settingitem:itemStatus_on="号码归属地开启"
+        settingitem:itemStatus_off="号码归属地关闭"
+        settingitem:sf_key="getTelLocation"/>
+
+
+</LinearLayout>
