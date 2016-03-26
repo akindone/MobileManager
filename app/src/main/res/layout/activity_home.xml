@@ -7,12 +7,12 @@
     tools:context="com.jike.mobilemanager_jk.Home">
     <TextView
         style="@style/title_activity"
-        android:text="功能列表" />
+        android:text="@string/activity_home_title" />
     <com.jike.view.MyTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="欢迎使用720度安全卫士，保障你每天的手机安全，防止流氓软件对您的骚扰，感谢您的使用。欢迎提供改进建议"
+        android:text="@string/activity_home_welcom"
         android:singleLine="true"
         android:ellipsize="marquee"
         />

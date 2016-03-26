@@ -119,9 +119,9 @@ public class SplashActivity extends Activity {
     private void ifUpdate(final String[] info) {
         String sname = SplashActivity.this.getClass().getName();
         String name = this.getClass().getName();
-        Log.e(TAG,"ifUpdate  THIS'S CLASSNAME"+sname+","+name);
+        Log.e(TAG,"ifUpdate  THIS'S CLASSNAME："+sname+","+name);
         Log.e(TAG, "ifUpdate");
-        new AlertDialog.Builder(SplashActivity.this)
+        new AlertDialog.Builder(this)
                .setTitle("出新版本啦")
                .setMessage(info[1])
                .setPositiveButton("去更新", new DialogInterface.OnClickListener() {
@@ -187,6 +187,7 @@ public class SplashActivity extends Activity {
                     fos = new FileOutputStream(file);
                     fos.write(bytes);
                     Toast.makeText(SplashActivity.this, "下载成功", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this, "下载成功", Toast.LENGTH_SHORT).show();
                     install(file);
 
                 } catch (FileNotFoundException e) {

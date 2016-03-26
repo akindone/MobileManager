@@ -9,7 +9,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入密码"/>
+        android:hint="请输入密码"
+        android:id="@+id/et_enterAgain_psw"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,11 +19,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:id="@+id/bt_dialog_enterAgain_ok"
             android:hint="确认"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:id="@+id/bt_dialog_enterAgain_cancel"
             android:hint="取消"/>
     </LinearLayout>
 
