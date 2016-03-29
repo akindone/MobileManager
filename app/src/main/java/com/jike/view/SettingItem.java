@@ -13,6 +13,7 @@ import com.jike.application.MyApplication;
 import com.jike.mobilemanager_jk.R;
 
 /**
+ * 该类是一个自定义组合控件，它填充了一个布局文件，并在代码中实现对布局文件中控件的逻辑操作
  * Created by wancc on 2016/3/25.
  */
 public class SettingItem extends RelativeLayout implements View.OnClickListener{
@@ -25,6 +26,7 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
     private String itemStatus_off;
     private String itemName;
     private String sp_key;
+    private MyOnclickListener myOnclickListener;
 
 
     public SettingItem(Context context) {
@@ -40,6 +42,7 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
     }
 
     private void init(AttributeSet attrs) {
+        //如果该控件在使用的时候没有给属性赋值，则返回null，要注意！！！
         itemName = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "itemName");
         itemStatus_on = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "itemStatus_on");
         itemStatus_off = attrs.getAttributeValue("http://schemas.android.com/apk/res-auto", "itemStatus_off");
@@ -52,8 +55,15 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
 
         tv_settingItem_title.setText(itemName);
 
-        boolean aBoolean = MyApplication.config.getBoolean(sp_key, true);
-        Log.e(TAG,"init isChecked"+aBoolean);
+        if (sp_key==null){
+            Log.e(TAG,"sp_key未赋值");
+        }
+        boolean aBoolean;
+        if ("ifbindSIM".equals(sp_key)||"openPreThiefFunc".equals(sp_key)){
+            aBoolean = MyApplication.config.getBoolean(sp_key, false);
+        }
+        else aBoolean = MyApplication.config.getBoolean(sp_key, true);
+        Log.e(TAG, "init isChecked" + aBoolean);
         if (aBoolean){
             tv_settingItem_state.setText(itemStatus_on);
             cb_settingItem_choice.setChecked(true);
@@ -63,27 +73,45 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
             cb_settingItem_choice.setChecked(false);
         }
         addView(v);//通过把组合控件添加到RelativeLayout,最终显示到调用RelativeLayout的布局中
-        setOnClickListener(this);
+        setOnClickListener(this);//给这个RelativiLayout控件设置监听
 
     }
 
     @Override
     public void onClick(View v) {
         boolean selected = cb_settingItem_choice.isChecked();
-        Log.e(TAG,"onClick isChecked"+selected);
+        Log.e(TAG, "onClick isChecked" + selected);
         SharedPreferences.Editor edit = MyApplication.config.edit();
         if (selected){
             cb_settingItem_choice.setChecked(false);
             tv_settingItem_state.setText(itemStatus_off);
             edit.putBoolean(sp_key, false);
-            Log.e(TAG, "false" );
+            Log.e(TAG, "false");
             edit.commit();
+            //给自定义监听设置动作
+            if (myOnclickListener!=null){
+                myOnclickListener.cancelBindSim();
+            }
         } else {
             cb_settingItem_choice.setChecked(true);
             tv_settingItem_state.setText(itemStatus_on);
             edit.putBoolean(sp_key, true);
             Log.e(TAG, "true");
             edit.commit();
+            if (myOnclickListener!=null){
+                myOnclickListener.doBindSim();
+            }
         }
+    }
+
+    //自定义监听接口,必须是public的 
+    public interface MyOnclickListener{
+        void doBindSim();
+        void cancelBindSim();
+    }
+
+    //提供api供调用方使用
+    public void setMyOnclickListener(MyOnclickListener l){
+        myOnclickListener=l;
     }
 }
