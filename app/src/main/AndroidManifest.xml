@@ -76,20 +76,24 @@
         <service
             android:name="com.jike.service.GetLocationService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <!-- DeviceAdminReceiver -->
-        <receiver android:name="com.jike.service.MyAdminReceiver"
-            android:label="@string/sample_device_admin"
+        <receiver
+            android:name="com.jike.service.MyAdminReceiver"
             android:description="@string/sample_device_admin_description"
+            android:label="@string/sample_device_admin"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <meta-data android:name="android.app.device_admin"
+            <meta-data
+                android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_sample" />
+
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
 
+        <activity android:name=".MyBaseActivity"></activity>
     </application>
 
 </manifest>

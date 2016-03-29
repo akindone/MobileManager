@@ -1,6 +1,5 @@
 package com.jike.mobilemanager_jk;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 
 import com.jike.application.MyApplication;
 
-public class PreThiefSetup3 extends Activity {
+public class PreThiefSetup3 extends MyBaseActivity {
 
     private EditText et_setup3_safenum;
 
@@ -61,9 +60,11 @@ public class PreThiefSetup3 extends Activity {
         if (!safenum.isEmpty()){
             MyApplication.setConfigValue("safenum", safenum);
             startActivity(new Intent(this, PreThiefSetup4.class));
+            overridePendingTransition(R.anim.slideinright, R.anim.slideoutleft);
         }else Toast.makeText(PreThiefSetup3.this, "安全手机号码不能为空", Toast.LENGTH_SHORT).show();
     }
     public void previous(View v){
         startActivity(new Intent(this, PreThiefSetup2.class));
+        overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
     }
 }

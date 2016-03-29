@@ -1,6 +1,5 @@
 package com.jike.mobilemanager_jk;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -10,7 +9,7 @@ import android.widget.Toast;
 import com.jike.application.MyApplication;
 import com.jike.view.SettingItem;
 
-public class PreThiefSetup2 extends Activity {
+public class PreThiefSetup2 extends MyBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +36,16 @@ public class PreThiefSetup2 extends Activity {
     public void next(View v){
         String simSerialNumber = MyApplication.getConfigValue("simSerialNumber", "");
         if (simSerialNumber.isEmpty()){
-            Toast.makeText(PreThiefSetup2.this, "请绑定sim卡，否则手机防盗功能无法使用", Toast.LENGTH_SHORT).show();
+        Toast.makeText(PreThiefSetup2.this, "请绑定sim卡，否则手机防盗功能无法使用", Toast.LENGTH_SHORT).show();
         }
-        else startActivity(new Intent(this, PreThiefSetup3.class));
+        else {
+            startActivity(new Intent(this, PreThiefSetup3.class));
+            overridePendingTransition(R.anim.slideinright, R.anim.slideoutleft);
+
+        }
     }
     public void previous(View v){
         startActivity(new Intent(this, PreThiefSetup1.class));
+        overridePendingTransition(R.anim.slideinleft, R.anim.slideoutright);
     }
 }
