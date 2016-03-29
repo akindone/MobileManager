@@ -1,5 +1,6 @@
 package com.jike.broadcastReceiver;
 
+import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -39,13 +40,28 @@ public class SmsBroadcastReceiver extends BroadcastReceiver {
                 Log.e(TAG,"*#location#*");
                 getlocation(context);
             }else if (body.equals("*#wipedata#*")){
-//                wipedata();
+                wipedata(context);
             }else if (body.equals("*#lockscreen#*")){
-//                lockscreen();
+                lockscreen(context);
+
             }
         }
     }
 
+    private void lockscreen(Context context) {
+        DevicePolicyManager mDPM =
+                (DevicePolicyManager)context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        mDPM.lockNow();
+        mDPM.resetPassword("123",0);
+    }
+
+    private void wipedata(Context context) {
+        DevicePolicyManager mDPM =
+                (DevicePolicyManager)context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        mDPM.wipeData(0);
+
+
+    }
 
 
     private void getlocation(Context context) {

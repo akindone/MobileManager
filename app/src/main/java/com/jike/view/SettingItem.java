@@ -104,7 +104,7 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
         }
     }
 
-    //自定义监听接口,必须是public的 
+    //自定义监听接口,必须是public的
     public interface MyOnclickListener{
         void doBindSim();
         void cancelBindSim();

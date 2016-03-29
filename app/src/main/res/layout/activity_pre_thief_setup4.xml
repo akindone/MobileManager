@@ -19,6 +19,11 @@
         indicatorview:sf_key="openPreThiefFunc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点此激活超级管理员"
+        android:onClick="active"/>
 
     <!-- part 3 -->
     <RelativeLayout
