@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jike.application.MyApplication;
+import com.jike.dao.NumberLocationDao;
 import com.jike.utils.HttpUtils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -111,6 +112,11 @@ public class SplashActivity extends Activity {
         pb_splash_download = (ProgressBar) findViewById(R.id.pb_splash_download);
 
         tv_splash_version.setText("手机卫士 版本号：" + appVersionName);
+
+        boolean getdb = NumberLocationDao.getdb(this, "phoneLocation.db");
+        if (!getdb){
+            Log.e(TAG,"数据库导入失败,或该目录下已经存在数据库文件");
+        }
         boolean autoUpdate = MyApplication.config.getBoolean("autoUpdate", true);
         if (autoUpdate) {getLatestVersion();}
         else gotoHome();

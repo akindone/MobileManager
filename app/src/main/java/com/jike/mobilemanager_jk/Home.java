@@ -54,6 +54,8 @@ public class Home extends Activity {
                         break;
                     case 1:
                         Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Home.this, AdvanceTool.class));
+                        overridePendingTransition(R.anim.slideinright,R.anim.slideoutleft);
                         break;
                     case 2:
                         Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();

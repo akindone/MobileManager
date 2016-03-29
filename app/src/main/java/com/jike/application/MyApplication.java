@@ -1,7 +1,10 @@
 package com.jike.application;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.SharedPreferences;
+
+import com.jike.service.MyNumberLocationService;
 
 /**
  * Created by wancc on 2016/3/25.
@@ -16,6 +19,7 @@ public class MyApplication extends Application {
         super.onCreate();
         config = getSharedPreferences("config", MODE_PRIVATE);
         editor = config.edit();
+        startService(new Intent(this, MyNumberLocationService.class));
     }
 
     public static void setConfigValue(String key,String value){
@@ -36,5 +40,11 @@ public class MyApplication extends Application {
     public static boolean getConfigValue(String key,boolean defValue){
         boolean value = config.getBoolean(key, defValue);
         return value;
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        stopService(new Intent(this, MyNumberLocationService.class));
     }
 }

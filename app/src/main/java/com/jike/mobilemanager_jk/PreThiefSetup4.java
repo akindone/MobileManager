@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.jike.service.MyAdminReceiver;
+import com.jike.broadcastReceiver.MyAdminReceiver;
 
 public class PreThiefSetup4 extends MyBaseActivity {
 

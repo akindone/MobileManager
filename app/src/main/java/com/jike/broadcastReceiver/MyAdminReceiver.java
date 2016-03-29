@@ -1,4 +1,4 @@
-package com.jike.service;
+package com.jike.broadcastReceiver;
 
 import android.app.admin.DeviceAdminReceiver;
 import android.content.Context;

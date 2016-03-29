@@ -80,7 +80,7 @@
 
         <!-- DeviceAdminReceiver -->
         <receiver
-            android:name="com.jike.service.MyAdminReceiver"
+            android:name="com.jike.broadcastReceiver.MyAdminReceiver"
             android:description="@string/sample_device_admin_description"
             android:label="@string/sample_device_admin"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -93,7 +93,14 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MyBaseActivity"></activity>
+        <activity android:name=".MyBaseActivity" />
+        <activity android:name=".AdvanceTool" />
+        <activity android:name=".AdvToolPhoLocation" />
+
+        <service
+            android:name="com.jike.service.MyNumberLocationService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

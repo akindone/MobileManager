@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jike.mobilemanager_jk.AdvanceTool">
+    <!-- part 1 -->
+    <TextView
+        style="@style/dialog_title"
+        android:text="高级工具" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="号码归属地查询"
+        android:onClick="getPhoneLocation"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="短信备份"
+        android:onClick="smsCopy"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="短信还原"
+        android:onClick="smsRestore"/>
+</LinearLayout>
