@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * 给主页设置九宫格
  * Created by wancc on 2016/3/25.
  */
 class MyBaseAdapter extends BaseAdapter {
@@ -34,7 +35,6 @@ class MyBaseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View v = View.inflate(Home.mHome, R.layout.item_home_funcs, null);
         ImageView iv_item_cion = (ImageView) v.findViewById(R.id.iv_item_cion);
         TextView tv_item_funcsName = (TextView) v.findViewById(R.id.tv_item_funcsName);

@@ -39,7 +39,7 @@ public class SplashActivity extends Activity {
     private static final String TAG ="SplashActivity" ;
     private  static final String PATH= "http://192.168.3.8/MobileManager/";
 
-    private static final int MSG_OK = 1;//TO TEST 非0？？
+    private static final int MSG_OK = 1;//TO TEST 不能写0,
     private static final int MSG_ERROR_NOTFOUND = -1;
     private static final int MSG_ERROR_SERVER = -2;
     private static final int MSG_ERROR_IO =-3 ;
@@ -111,8 +111,8 @@ public class SplashActivity extends Activity {
         pb_splash_download = (ProgressBar) findViewById(R.id.pb_splash_download);
 
         tv_splash_version.setText("手机卫士 版本号：" + appVersionName);
-        boolean getTelLocation = MyApplication.config.getBoolean("autoUpdate", true);
-        if (getTelLocation) {getLatestVersion();}
+        boolean autoUpdate = MyApplication.config.getBoolean("autoUpdate", true);
+        if (autoUpdate) {getLatestVersion();}
         else gotoHome();
     }
 
@@ -253,9 +253,9 @@ public class SplashActivity extends Activity {
 
                     if (responseCode/100==4){
                         message.what=MSG_ERROR_NOTFOUND;
-                    } else if (responseCode==500){
+                    } else if (responseCode/100==5){
                         message.what=MSG_ERROR_SERVER;
-                    } else if (responseCode==200){
+                    } else if (responseCode/100==2){
                         Log.e(TAG,"getLatestVersion SCUCESS");
                         InputStream inputStream = conn.getInputStream();
 
@@ -305,11 +305,15 @@ public class SplashActivity extends Activity {
     }
 
 
+    /**
+     * 获取应用的版本名称
+     * @return
+     */
     public String getAppVersionName() {
         Log.e(TAG,"getAppVersionName");
         String appVersionName="";
         PackageManager packageManager = getPackageManager();
-        Message message = handler.obtainMessage();
+        Message message = handler.obtainMessage();//有可能发生异常
         try {
             PackageInfo packageInfo = packageManager.getPackageInfo(getPackageName(), 0);
             appVersionName = packageInfo.versionName;
@@ -317,7 +321,7 @@ public class SplashActivity extends Activity {
             e.printStackTrace();
             message.what=MSG_ERROR_NNFE;
         } finally {
-            handler.sendMessage(message);
+            handler.sendMessage(message);//有可能发生异常，为了防止崩溃，让handler去处理异常
         }
         return appVersionName;
     }

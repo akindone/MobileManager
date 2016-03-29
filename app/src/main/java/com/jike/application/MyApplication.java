@@ -27,4 +27,14 @@ public class MyApplication extends Application {
         String value = config.getString(key, defValue);
         return value;
     }
+
+    public static void setConfigValue(String key,boolean value){
+        editor.putBoolean(key,value);
+        editor.commit();
+    }
+
+    public static boolean getConfigValue(String key,boolean defValue){
+        boolean value = config.getBoolean(key, defValue);
+        return value;
+    }
 }

@@ -122,7 +122,7 @@ public class Home extends Activity {
     }
 
     private void enterSafeSetting() {
-//        startActivity(new Intent(this,));
+        startActivity(new Intent(Home.this,PreThiefStart.class));
     }
 
     private void alterSetPwdDialog() {
@@ -153,8 +153,10 @@ public class Home extends Activity {
                 }else {
                     //把密码加密
                     String md5_psw = MD5Utils.getMd5(psw);
-                    MyApplication.setConfigValue("preventThiefCode",md5_psw);
+                    MyApplication.setConfigValue("preventThiefCode", md5_psw);
                     alertDialog.dismiss();
+                    Toast.makeText(Home.this, "密码设置成功", Toast.LENGTH_SHORT).show();
+                    enterSafeSetting();//进入手机防盗设置页面
                 }
             }
         });

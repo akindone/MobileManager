@@ -5,6 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name="com.jike.application.MyApplication"
@@ -24,8 +30,53 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home"></activity>
-        <activity android:name=".SettingActivity"></activity>
+        <activity
+            android:name=".Home"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".SettingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PreThiefSetup1"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PreThiefSetup2"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PreThiefStart"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PreThiefSetup3"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PreThiefSetup4"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".PreThiefEnd"
+            android:launchMode="singleTask" />
+        <activity android:name=".MyContactView" />
+
+        <receiver
+            android:name="com.jike.broadcastReceiver.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.jike.broadcastReceiver.SmsBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.jike.service.GetLocationService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

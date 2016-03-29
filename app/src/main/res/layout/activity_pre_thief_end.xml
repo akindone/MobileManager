@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jike.mobilemanager_jk.PreThiefEnd">
+    <!-- part 1 -->
+    <TextView
+        style="@style/dialog_title"
+        android:text="手机防盗" />
+    <!-- part 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="安全号码"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:id="@+id/et_safetelnum"/>
+    </LinearLayout>
+    <!-- part 3 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:text="防盗保护是否开启"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/unlock"
+            android:id="@+id/et_doPreThief"/>
+    </LinearLayout>
+    <!-- part 4 -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="重新进入设置向导"
+        android:onClick="gotoSetupStart"/>
+    <!-- part 5 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#bbb"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:text="功能简介："/>
+    <TextView
+        style="@style/tv_listItem"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="GPS追踪:#*location*#"/>
+    <TextView
+        style="@style/tv_listItem"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="播放报警音乐:#*alarm*#"/>
+    <TextView
+        style="@style/tv_listItem"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="远程删除数据:#*wipedata*#"/>
+    <TextView
+        style="@style/tv_listItem"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="远程锁屏:#*lockscreen*#"/>
+</LinearLayout>

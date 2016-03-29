@@ -17,7 +17,7 @@ public class MyTextView extends TextView {
         super(context, attrs);
     }
 
-    //使textview一直获得焦点
+    //实现走马灯效果：使textview一直获得焦点，且ellezipe=marque
     @Override
     public boolean isFocused() {
         return true;//super.isFocused();
