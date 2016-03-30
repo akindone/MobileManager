@@ -62,19 +62,40 @@ public class NumberLocationDao {
     }
 
     public static String getPhoneLocation(Context context,String num){
-        String location;
-        SQLiteDatabase db = SQLiteDatabase.openDatabase(fileName, null, Context.MODE_PRIVATE);
-        String numprefix=num.substring(0, 7);
-        Cursor cursor = db.rawQuery("select city,cardtype from address_tb where _id =" +
-                "(select outkey from numinfo where mobileprefix =?);", new String[]{numprefix});
-        cursor.moveToNext();
-        int city = cursor.getColumnIndex("city");
-        int cardtype = cursor.getColumnIndex("cardtype");
-        String string_city = cursor.getString(city);
-        String string_cardtype = cursor.getString(cardtype);
 
-        location=string_city+string_cardtype;
-        Log.e(TAG,"getPhoneLocation :"+location);
+        String location="";
+        if (isValid(num)){
+            SQLiteDatabase db = SQLiteDatabase.openDatabase(fileName, null, Context.MODE_PRIVATE);
+            String numprefix=num.substring(0, 7);
+            Cursor cursor = db.rawQuery("select city,cardtype from address_tb where _id =" +
+                    "(select outkey from numinfo where mobileprefix =?);", new String[]{numprefix});
+            cursor.moveToNext();
+            int city = cursor.getColumnIndex("city");
+            int cardtype = cursor.getColumnIndex("cardtype");
+            String string_city = cursor.getString(city);
+            String string_cardtype = cursor.getString(cardtype);
+
+            location=string_city+string_cardtype;
+            Log.e(TAG,"getPhoneLocation :"+location);
+        }
         return location;
+    }
+
+    /**
+     * 11位 以1开头，第二位数字可以为3,4,5,6,7,8，
+     * @param num 输入的手机号
+     * @return 判断该号码是否符合手机号格式
+     */
+    public static boolean isValid(String num) {
+        /*if (num.length()!=11) return false;
+        else {
+            char[] chars = num.toCharArray();
+            for (char c : chars) {
+                if (!('0' <= c && c <= '9')) return false;
+            }
+        }
+        return true;*/
+
+        return num.matches("1[3,4,5,6,7,8]\\d{9}");
     }
 }

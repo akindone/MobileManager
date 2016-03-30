@@ -47,4 +47,14 @@ public class MyApplication extends Application {
         super.onTerminate();
         stopService(new Intent(this, MyNumberLocationService.class));
     }
+
+    public static int getConfigValue(String key, int defValue) {
+        int value = config.getInt(key, defValue);
+        return value;
+    }
+
+    public static void setConfigValue(String key, int value) {
+        editor.putInt(key,value);
+        editor.commit();
+    }
 }

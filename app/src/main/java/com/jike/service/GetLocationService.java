@@ -25,7 +25,6 @@ public class GetLocationService extends Service {
                 double longitude = location.getLongitude();
                 MyApplication.setConfigValue("latitude",latitude+"");
                 MyApplication.setConfigValue("longitude",longitude+"");
-
             }
 
             @Override

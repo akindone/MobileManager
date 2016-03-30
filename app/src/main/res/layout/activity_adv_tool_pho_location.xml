@@ -18,5 +18,9 @@
         android:layout_height="wrap_content"
         android:text="查询号码归属地"
         android:onClick="queryLocation"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_phoneLocation"/>
 
 </LinearLayout>
