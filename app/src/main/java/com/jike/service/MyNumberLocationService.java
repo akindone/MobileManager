@@ -77,7 +77,6 @@ public class MyNumberLocationService extends Service {
         private void showPhoneLocation(String num) {
             String phoneLocation = NumberLocationDao.getPhoneLocation(null, num);
             showMyToast(phoneLocation);
-
         }
 
         private void showMyToast(String phoneLocation) {
@@ -95,26 +94,31 @@ public class MyNumberLocationService extends Service {
             TextView tv_mytoast_msg = (TextView) inflate.findViewById(R.id.tv_mytoast_msg);
             tv_mytoast_msg.setText(phoneLocation);
 
-
             wm = (WindowManager) getSystemService(WINDOW_SERVICE);
             WindowManager.LayoutParams params=new WindowManager.LayoutParams();
             params.width=WindowManager.LayoutParams.WRAP_CONTENT;
             params.height=WindowManager.LayoutParams.WRAP_CONTENT;
-            params.flags=WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                    |WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                    |WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+
+           /* inflate.setLeft(MyApplication.getConfigValue("mytoast_location_x",200));
+            inflate.setRight(MyApplication.getConfigValue("mytoast_location_y",300));*/
+
             params.format= PixelFormat.TRANSLUCENT;
-            params.type=WindowManager.LayoutParams.TYPE_TOAST;
 
             //动态指定window在屏幕上的位置
-            params.x=MyApplication.getConfigValue("mytoast_location_x",200);//相对于屏幕
+            params.x=MyApplication.getConfigValue("mytoast_location_x",100);//相对于屏幕
             params.y=MyApplication.getConfigValue("mytoast_location_y", 300);
 
             Log.e(TAG,MyApplication.getConfigValue("mytoast_location_x",200)+"***"+
                     MyApplication.getConfigValue("mytoast_location_y", 300));
 
+            params.flags=WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                    |WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                    |WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+            params.type=WindowManager.LayoutParams.TYPE_TOAST;
+
             wm.addView(inflate, params);
             flag=true;
+
         }
     }
 }

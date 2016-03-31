@@ -19,7 +19,9 @@ public class MyApplication extends Application {
         super.onCreate();
         config = getSharedPreferences("config", MODE_PRIVATE);
         editor = config.edit();
-        startService(new Intent(this, MyNumberLocationService.class));
+        //根据用户的选择来开启服务
+        if (getConfigValue("getTelLocation",false))
+            startService(new Intent(this, MyNumberLocationService.class));
     }
 
     public static void setConfigValue(String key,String value){
@@ -45,7 +47,7 @@ public class MyApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        stopService(new Intent(this, MyNumberLocationService.class));
+//        stopService(new Intent(this, MyNumberLocationService.class));//使用者并不想应用退出后服务停止
     }
 
     public static int getConfigValue(String key, int defValue) {

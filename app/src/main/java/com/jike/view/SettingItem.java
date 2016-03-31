@@ -32,12 +32,15 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
     public SettingItem(Context context) {
         super(context);
         init(null);
+
     }
 
-    //系统调用
+
+    //系统调用,调用时间？？？在使用该类的xml文件被setContentView后？
     public SettingItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
+        Log.e(TAG, "SettingItem初始化");
 
     }
 
@@ -55,11 +58,19 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
 
         tv_settingItem_title.setText(itemName);
 
+        switchCheckBox();
+
+        addView(v);//通过把组合控件添加到RelativeLayout,最终显示到调用RelativeLayout的布局中
+        setOnClickListener(this);//给这个RelativiLayout控件设置监听
+
+    }
+
+    private void switchCheckBox() {
         if (sp_key==null){
-            Log.e(TAG,"sp_key未赋值");
+            Log.e(TAG, "sp_key未赋值");
         }
         boolean aBoolean;
-        if ("ifbindSIM".equals(sp_key)||"openPreThiefFunc".equals(sp_key)){
+        if ("ifbindSIM".equals(sp_key)||"openPreThiefFunc".equals(sp_key)||"getTelLocation".equals(sp_key)){
             aBoolean = MyApplication.config.getBoolean(sp_key, false);
         }
         else aBoolean = MyApplication.config.getBoolean(sp_key, true);
@@ -72,9 +83,6 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
             tv_settingItem_state.setText(itemStatus_off);
             cb_settingItem_choice.setChecked(false);
         }
-        addView(v);//通过把组合控件添加到RelativeLayout,最终显示到调用RelativeLayout的布局中
-        setOnClickListener(this);//给这个RelativiLayout控件设置监听
-
     }
 
     @Override

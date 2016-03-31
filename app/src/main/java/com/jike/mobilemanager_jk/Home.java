@@ -58,9 +58,11 @@ public class Home extends Activity {
                         overridePendingTransition(R.anim.slideinright,R.anim.slideoutleft);
                         break;
                     case 2:
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Home.this, PackageManagerActivity.class));
+//                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
+
                         Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
@@ -73,10 +75,11 @@ public class Home extends Activity {
                         Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 7:
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Home.this, AdvanceTool.class));
+//                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 8:
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Home.this, SettingActivity.class));
                         break;
                 }

@@ -20,6 +20,7 @@
         settingitem:sf_key="autoUpdate"/>
 
     <com.jike.view.SettingItem
+        android:id="@+id/si_setup_telLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         settingitem:itemName="号码归属地"

@@ -155,7 +155,7 @@ public class SplashActivity extends Activity {
                 super.run();
                 Message message = handler.obtainMessage();
                 try {
-                    Thread.currentThread().sleep(2000);
+                    Thread.currentThread().sleep(100);
                     message.what=MSG_WAIT_TIMEOUT;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -251,8 +251,8 @@ public class SplashActivity extends Activity {
                     URL url = new URL(path);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(2000);
+                    conn.setReadTimeout(2000);
                     conn.connect();
                     int responseCode = conn.getResponseCode();
                     Log.e(TAG,"responseCode"+responseCode);

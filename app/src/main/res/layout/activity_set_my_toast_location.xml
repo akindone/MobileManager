@@ -4,6 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.jike.mobilemanager_jk.SetMyToastLocation">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="showMytoust"
+        android:onClick="showMytoust"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="hideMytoust"
+        android:onClick="hideMytoust"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"

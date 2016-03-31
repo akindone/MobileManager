@@ -35,7 +35,8 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".SettingActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:finishOnTaskLaunch="true"/>
         <activity
             android:name=".PreThiefSetup1"
             android:launchMode="singleTask" />
@@ -102,7 +103,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".SetMyToastLocation"></activity>
+        <activity android:name=".SetMyToastLocation" />
+        <activity android:name=".PackageManagerActivity"/>
     </application>
 
 </manifest>
