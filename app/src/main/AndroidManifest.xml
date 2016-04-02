@@ -35,8 +35,7 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".SettingActivity"
-            android:launchMode="singleTask"
-            android:finishOnTaskLaunch="true"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".PreThiefSetup1"
             android:launchMode="singleTask" />
@@ -104,7 +103,23 @@
             android:exported="true" />
 
         <activity android:name=".SetMyToastLocation" />
-        <activity android:name=".PackageManagerActivity"/>
+        <activity android:name=".PackageManagerActivity" />
+
+        <provider
+            android:name="com.jike.provider.MyContentProvider"
+            android:authorities="com.jike.mobilemanager_jk"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.jike.service.MyLockAppService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".LockAppActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".ProcessManagerActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jike.mobilemanager_jk.LockAppActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_centerInParent="true"
+        android:text="少壮不努力\n老大徒伤悲\n骚年，加油\n↖(^ω^)↗"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bt_applock_check"
+        android:text="check"
+        android:onClick="check"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入密码"
+        android:id="@+id/et_applock_password"
+        android:layout_above="@id/bt_applock_check"/>
+
+</RelativeLayout>

@@ -63,7 +63,8 @@ public class Home extends Activity {
                         break;
                     case 3:
 
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Home.this, ProcessManagerActivity.class));
+//                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
                         Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();

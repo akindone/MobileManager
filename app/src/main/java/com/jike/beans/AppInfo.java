@@ -10,16 +10,28 @@ public class AppInfo {
     private Drawable icon;
     private boolean isSDcard;
     private boolean isSystem;
+    private String packagename;
 
-    public AppInfo() {
+    public String getPackagename() {
+        return packagename;
     }
 
-    public AppInfo(String name, Drawable icon, boolean isSDcard, boolean isSystem) {
+    public void setPackagename(String packagename) {
+        this.packagename = packagename;
+    }
+
+    public AppInfo(String name, Drawable icon, boolean isSDcard, boolean isSystem, String packagename) {
         this.name = name;
         this.icon = icon;
         this.isSDcard = isSDcard;
         this.isSystem = isSystem;
+        this.packagename = packagename;
     }
+
+    public AppInfo() {
+    }
+
+
 
     public String getName() {
         return name;
@@ -60,6 +72,7 @@ public class AppInfo {
                 ", icon=" + icon +
                 ", isSDcard=" + isSDcard +
                 ", isSystem=" + isSystem +
+                ", packagename='" + packagename + '\'' +
                 '}';
     }
 }

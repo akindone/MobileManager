@@ -54,6 +54,7 @@ public class PackageUtils {
         List<ApplicationInfo> infoList = pm.getInstalledApplications(0);
         for (ApplicationInfo info :
                 infoList) {
+
             CharSequence label = info.loadLabel(pm);
             Drawable icon = info.loadIcon(pm);
             boolean isSDcard=false;
@@ -64,7 +65,8 @@ public class PackageUtils {
             if ((info.flags&ApplicationInfo.FLAG_SYSTEM)!=0){
                 isSystem=true;
             }
-            AppInfo appInfo = new AppInfo(label.toString(), icon, isSDcard, isSystem);
+
+            AppInfo appInfo = new AppInfo(label.toString(), icon, isSDcard, isSystem,info.packageName);
             appInfos.add(appInfo);
         }
         return appInfos;

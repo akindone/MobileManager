@@ -28,7 +28,7 @@ public class SettingActivity extends ActionBarActivity {
         supportActionBar.hide();
     }
 
-    //然并卵 因为再次可见时，系统不会调用SettingItem的构造方法
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -37,9 +37,7 @@ public class SettingActivity extends ActionBarActivity {
         //checkbox 既是用户开启服务的开关 也是服务是否开启的反映
         //判断服务开启状态
         boolean isStarted = PackageUtils.isServiceStarted("com.jike.mobilemanager_jk.MyNumberLocationService", this);
-        if (isStarted){
-            MyApplication.setConfigValue("getTelLocation",true);
-        }else MyApplication.setConfigValue("getTelLocation", false);
+        si_setup_telLocation.setCheckbox(isStarted);
 
         //根据用户点击进行开关
         si_setup_telLocation.setMyOnclickListener(new SettingItem.MyOnclickListener() {
