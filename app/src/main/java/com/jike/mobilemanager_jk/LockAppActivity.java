@@ -25,8 +25,8 @@ public class LockAppActivity extends ActionBarActivity {
     public void check(View v){
         String pwd = et_applock_password.getText().toString();
         if ("123".equals(pwd)){
+
             //把该应用名 通过广播 发回给PMA，pma把该应用名加入白名单
-            //TODO
             Intent intent = new Intent();
             intent.setAction("com.jike.mobilemanager_jk.lockapp");//接受者的intent filter 也是这个才能过滤到
             intent.putExtra("tempIgnorePkgname",packagename);
@@ -43,7 +43,7 @@ public class LockAppActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //TODO 回到主页
+        // 回到主页
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);

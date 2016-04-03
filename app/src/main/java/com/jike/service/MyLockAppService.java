@@ -16,12 +16,16 @@ import com.jike.dao.LockAppDao;
 import com.jike.mobilemanager_jk.LockAppActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MyLockAppService extends Service {
 
     private static final String TAG = "MyLockAppService";
-    ArrayList<String> ignoreAppList=new ArrayList<String>();
+
+//    ArrayList<String> ignoreAppList=new ArrayList<String>();
+    HashSet ignoreAppSet = new HashSet<>();
+
     private String currpkgname;
     private LockAppDao lockAppDao;
     private ArrayList<String> allPackagename;
@@ -31,8 +35,7 @@ public class MyLockAppService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return null;
     }
 
     @Override
@@ -69,7 +72,7 @@ public class MyLockAppService extends Service {
                     Log.e(TAG,"runningAppProcessInfo");
 
 
-                    if (allPackagename.contains(currpkgname)&&!ignoreAppList.contains(currpkgname)){
+                    if (allPackagename.contains(currpkgname)&&!ignoreAppSet.contains(currpkgname)){
                         //锁定
                         Intent intent1 = new Intent(MyLockAppService.this, LockAppActivity.class);
                         intent1.putExtra("packagename", currpkgname);
@@ -92,7 +95,7 @@ public class MyLockAppService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             String ignorePkgname = intent.getStringExtra("tempIgnorePkgname");
-            ignoreAppList.add(ignorePkgname);//TODO  用set是否更好些
+            ignoreAppSet.add(ignorePkgname);
             Log.e(TAG,"MyIgnoreLockAppReceiver:"+ignorePkgname);
         }
     }

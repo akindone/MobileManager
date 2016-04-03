@@ -1,12 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.jike.mobilemanager_jk.ProcessManagerActivity">
+    <!-- part 1 -->
+    <TextView
+        style="@style/dialog_title"
+        android:text="进程管理" />
+    <!-- part 2 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:text="sd"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_process_processnum"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:text="rom"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_process_spaceRAM"/>
+    </LinearLayout>
+    <!-- part 3 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv_process_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#aaa"
+            android:id="@+id/tv_process_reminder"/>
+    </FrameLayout>
+    <!-- part 4 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="全选"
+            android:onClick="selectAll"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="反选"
+            android:onClick="unselectAll"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="清理"
+            android:onClick="killProcess"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="分组"
+            android:onClick="showByGroup"/>
+    </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
