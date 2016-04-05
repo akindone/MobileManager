@@ -105,4 +105,15 @@ public class ProcessUtils {
         String size = Formatter.formatFileSize(ctx, availMem);
         return size;
     }
+
+    public static void killProcess(ArrayList<ProcessInfo> runningProcess,Context ctx) {
+        for (ProcessInfo info:runningProcess){
+            //有些系统进程可以杀掉  但不能杀死自己应用
+            if (!ctx.getPackageName().equals(info.getPackagename())&&info.isChecked()){
+                //杀掉进程
+                ActivityManager activityManager = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
+                activityManager.killBackgroundProcesses(info.getPackagename());
+            }
+        }
+    }
 }

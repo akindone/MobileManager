@@ -3,16 +3,22 @@ package com.jike.utils;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageStats;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Environment;
+import android.os.RemoteException;
 import android.os.StatFs;
 import android.text.format.Formatter;
+import android.util.Log;
 
 import com.jike.beans.AppInfo;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +26,63 @@ import java.util.List;
  * Created by wancc on 2016/3/31.
  */
 public class PackageUtils {
+
+    private static final String TAG = "PackageUtils";
+    private static long cacheSize;
+
+    public PackageUtils() {
+    }
+
+    /**
+     * 清除应用缓存
+     * @param packageName
+     */
+    public static void clearCache(String packageName) {
+
+    }
+
+
+    /**
+     * 获取应用的缓存大小,因为涉及多线程 所以每次最好获取一次
+     *
+     */
+    public static String getAppCacheSize(Context ctx,String packagename) {
+
+
+        IPackageStatsObserver.Stub mStatsObserver = new IPackageStatsObserver.Stub(){
+
+            @Override
+            public void onGetStatsCompleted(PackageStats pStats, boolean succeeded) throws RemoteException {
+                final String packageName = pStats.packageName;
+                cacheSize = pStats.cacheSize;
+                Log.e("onGetStatsCompleted", packageName + "---" + cacheSize);
+            }
+        };
+
+        PackageManager mPm = ctx.getPackageManager();
+        try {
+            final Class<?> pmClass = ctx.getClassLoader().loadClass("android.content.pm.PackageManager");
+            final Method getPackageSizeInfo = pmClass.getMethod("getPackageSizeInfo", String.class, IPackageStatsObserver.class);
+            getPackageSizeInfo.invoke(mPm, packagename, mStatsObserver);
+
+            Thread.sleep(100);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        Log.e(TAG,"getAppCacheInfo");
+        return Formatter.formatFileSize(ctx,cacheSize);
+
+
+    }
 
 
     /**
@@ -40,6 +103,18 @@ public class PackageUtils {
             }
         }
         return false;
+    }
+
+
+    /**
+     * 获取所有安装的应用的个数
+     * @param ctx
+     * @return
+     */
+    public static int  getInstallAppNum(Context ctx){
+        PackageManager pm = ctx.getPackageManager();
+        List<ApplicationInfo> infoList = pm.getInstalledApplications(0);
+        return infoList.size();
     }
 
     /**
@@ -121,4 +196,13 @@ public class PackageUtils {
         String size_m = Formatter.formatFileSize(ctx, size_byte);
         return size_m;
     }
+
+
+    public static List<ApplicationInfo> getApplicationInfoList(Context ctx) {
+        PackageManager pm = ctx.getPackageManager();
+        List<ApplicationInfo> infoList = pm.getInstalledApplications(0);
+        return infoList;
+    }
+
+
 }

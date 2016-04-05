@@ -1,7 +1,6 @@
 package com.jike.mobilemanager_jk;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,10 +47,10 @@ public class ProcessManagerActivity extends Activity {
         lv_process_content = (ListView) findViewById(R.id.lv_process_content);
         tv_process_reminder = (TextView) findViewById(R.id.tv_process_reminder);
 
-
-
         myAsyncTask = new MyAsyncTask();
         myAsyncTask.execute();
+
+
     }
 
     public void selectAll(View view) {
@@ -72,14 +71,7 @@ public class ProcessManagerActivity extends Activity {
     }
 
     public void killProcess(View view) {
-        for (ProcessInfo info:runningProcess){
-            //有些系统进程可以杀掉  但不能杀死自己应用
-            if (!getPackageName().equals(info.getPackagename())&&info.isChecked()){
-                //杀掉进程
-                ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-                activityManager.killBackgroundProcesses(info.getPackagename());
-            }
-        }
+        ProcessUtils.killProcess(runningProcess,this);
         reFresh();
     }
 
@@ -294,6 +286,7 @@ public class ProcessManagerActivity extends Activity {
         private TextView tv_item_process_label;
         private TextView tv_item_process_ramSize;
         private CheckBox cb_item_process;
-
     }
+
+
 }
