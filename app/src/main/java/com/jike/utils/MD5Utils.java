@@ -1,5 +1,9 @@
 package com.jike.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -29,6 +33,49 @@ public class MD5Utils {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+        return md5_psw.toString();
+    }
+
+    public static String getApkMd5(String sourceDir) {
+        StringBuffer md5_psw=new StringBuffer();
+        File file = new File(sourceDir);
+        FileInputStream fis = null;
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+
+            fis = new FileInputStream(file);
+            byte[] bytes = new byte[1024];
+            int len = -1;
+            while ((len=fis.read(bytes))!=-1){
+                md5.update(bytes,0,len);
+            }
+            byte[] digest = md5.digest();
+
+            for (byte b:digest) {
+                int result = b&0xff;
+                String hexString = Integer.toHexString(result);
+                if (hexString.length()==1){
+                    md5_psw.append("0");
+                }
+                md5_psw.append(hexString);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } finally {
+            if (fis!=null){
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+
         return md5_psw.toString();
     }
 }

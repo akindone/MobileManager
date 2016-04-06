@@ -53,8 +53,7 @@ public class Home extends Activity {
                         //Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Home.this, AdvanceTool.class));
+                        startActivity(new Intent(Home.this, TeleManagerActivity.class));
                         overridePendingTransition(R.anim.slideinright,R.anim.slideoutleft);
                         break;
                     case 2:
@@ -67,10 +66,13 @@ public class Home extends Activity {
 //                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Home.this, DataUsageActivity.class));
+//                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 5:
-                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Home.this, AntiVirusActivity.class));
+
+//                        Toast.makeText(Home.this, MyBaseAdapter.funsName[position], Toast.LENGTH_SHORT).show();
                         break;
                     case 6:
                         startActivity(new Intent(Home.this, ScanCacheActivity.class));

@@ -91,13 +91,13 @@ public class PackageUtils {
      * @param ctx
      * @return
      */
-
     public static boolean isServiceStarted(String serviceName,Context ctx){
         ActivityManager am = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> runningServices = am.getRunningServices(200);
-        for (ActivityManager.RunningServiceInfo service :
+        for (ActivityManager.RunningServiceInfo serviceInfo :
                 runningServices) {
-            String name = service.getClass().getName();
+            String name = serviceInfo.service.getClassName();
+            Log.e("service name",name);
             if (name.equals(serviceName)){
                 return true;
             }

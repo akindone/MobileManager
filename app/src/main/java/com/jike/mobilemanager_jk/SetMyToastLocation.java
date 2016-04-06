@@ -89,6 +89,7 @@ public class SetMyToastLocation extends Activity {
             }
         });
 
+        //实现双击，归位效果
         ll_mytoast_bg.setOnClickListener(new View.OnClickListener() {
             boolean flag=true;
             @Override

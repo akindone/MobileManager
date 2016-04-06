@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jike.mobilemanager_jk.AntiVirusActivity">
+    <TextView
+        style="@style/dialog_title"
+        android:text="手机杀毒"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fl_scanner">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/iv_antivirus_scanner_bg"
+                android:src="@drawable/ic_scanner_malware"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/iv_antivirus_scanner_act"
+                android:src="@drawable/act_scanning_03"/>
+        </FrameLayout>
+
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/pb_scancache_bg"
+            android:id="@+id/pb_antivirus_progress"
+            android:layout_toRightOf="@id/fl_scanner"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pb_antivirus_progress"
+            android:layout_toRightOf="@id/fl_scanner"
+            android:id="@+id/tv_antivirus_text"
+            android:text="正在扫描"/>
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_antivirus_content"/>
+
+
+
+
+</LinearLayout>

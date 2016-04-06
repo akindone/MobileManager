@@ -99,7 +99,7 @@ public class PackageManagerActivity extends Activity implements View.OnClickList
      */
     private void uninstall() {
 
-        //有两张不能卸载 系统自带的应用  该应用本身
+        //有两种不能卸载 系统自带的应用  该应用本身
         if (curr_click_appinfo.getPackagename().equals("com.jike.mobilemanager_jk"))
             Toast.makeText(PackageManagerActivity.this, "不能卸载应用本身", Toast.LENGTH_SHORT).show();
         else if (curr_click_appinfo.isSDcard())

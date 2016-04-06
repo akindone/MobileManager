@@ -56,6 +56,15 @@
         android:text="自定义窗口位置"
         android:onClick="bt_setting_mytoast_location"/>
 
+    <com.jike.view.SettingItem
+        android:id="@+id/si_setup_blacklist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        settingitem:itemName="开启拦截黑名单"
+        settingitem:itemStatus_on="黑名单拦截开启"
+        settingitem:itemStatus_off="黑名单拦截关闭"
+        settingitem:sf_key="blacklist"/>
+
 
 
 </LinearLayout>

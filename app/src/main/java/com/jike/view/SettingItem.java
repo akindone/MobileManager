@@ -36,7 +36,7 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
     }
 
 
-    //系统调用,调用时间？？？在使用该类的xml文件被setContentView后？
+    //系统调用,调用时间？在使用该类的xml文件被setContentView后
     public SettingItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
@@ -58,7 +58,7 @@ public class SettingItem extends RelativeLayout implements View.OnClickListener{
 
         tv_settingItem_title.setText(itemName);
 
-        switchCheckBox();
+        switchCheckBox();//根据sp里保存的状态来初始化checkbox
 
         addView(v);//通过把组合控件添加到RelativeLayout,最终显示到调用RelativeLayout的布局中
         setOnClickListener(this);//给这个RelativiLayout控件设置监听

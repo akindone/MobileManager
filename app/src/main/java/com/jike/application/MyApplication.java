@@ -13,6 +13,7 @@ import android.widget.RemoteViews;
 
 import com.jike.beans.ProcessInfo;
 import com.jike.mobilemanager_jk.R;
+import com.jike.service.BlackListService;
 import com.jike.service.MyNumberLocationService;
 import com.jike.utils.ProcessUtils;
 import com.jike.widget.MyAppWidgetProvider;
@@ -36,6 +37,14 @@ public class MyApplication extends Application {
         //根据用户的选择来开启服务
         if (getConfigValue("getTelLocation",false))
             startService(new Intent(this, MyNumberLocationService.class));
+        if (getConfigValue("blacklist",false)){
+            //开启电话拦截
+            startService(new Intent(this, BlackListService.class));
+
+            //开启短信拦截
+            IntentFilter filter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
+            registerReceiver(new BlackListService().new MySmsBroadcastReceiver(),filter);
+        }
 
 
         //注册广播，以接收来自widget的请求
