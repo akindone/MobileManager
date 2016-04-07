@@ -39,7 +39,7 @@ import java.net.URL;
 
 public class SplashActivity extends Activity {
     private static final String TAG ="SplashActivity" ;
-    private  static final String PATH= "http://192.168.3.8/MobileManager/";
+    private  static final String PATH= "http://192.168.3.4/MobileManager/";
 
     private static final int MSG_OK = 1;//TO TEST 不能写0,
     private static final int MSG_ERROR_NOTFOUND = -1;

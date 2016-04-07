@@ -7,7 +7,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-abstract class MyBaseActivity extends Activity {
+public abstract class MyBaseActivity extends Activity {
     GestureDetector gestureDetector;
 
     @Override
