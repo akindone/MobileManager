@@ -31,4 +31,8 @@ public class PreThiefEnd extends Activity {
     public void gotoSetupStart(View v){
         startActivity(new Intent(PreThiefEnd.this,PreThiefSetup1.class) );
     }
+
+    public void gotoHome(View view) {
+        startActivity(new Intent(PreThiefEnd.this,Home.class) );
+    }
 }

@@ -51,7 +51,7 @@ public class LockAppDao {
     }
 
     /**
-     * 可以一次性把所有的packagename拿到
+     * 可以一次性把所有的packagename拿到系统内存里
      * @return
      */
     public ArrayList<String> getAllPackagename(){

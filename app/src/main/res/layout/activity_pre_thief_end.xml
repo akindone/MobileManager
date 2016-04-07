@@ -46,6 +46,11 @@
         android:layout_height="wrap_content"
         android:text="重新进入设置向导"
         android:onClick="gotoSetupStart"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="返回主页"
+        android:onClick="gotoHome"/>
     <!-- part 5 -->
     <TextView
         android:layout_width="match_parent"

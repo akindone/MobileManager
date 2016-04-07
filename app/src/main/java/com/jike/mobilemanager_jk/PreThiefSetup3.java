@@ -31,10 +31,10 @@ public class PreThiefSetup3 extends MyBaseActivity {
     }
 */
 
-    // way2 自己实现应该listview
+    // way2 自己实现一个listview
     public void gotoContactList(View v){
         Intent intent = new Intent(this, MyContactView.class);
-        intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+//        intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
         startActivityForResult(intent, 200);
     }
 

@@ -33,18 +33,9 @@ public class PackageUtils {
     public PackageUtils() {
     }
 
-    /**
-     * 清除应用缓存
-     * @param packageName
-     */
-    public static void clearCache(String packageName) {
-
-    }
-
 
     /**
      * 获取应用的缓存大小,因为涉及多线程 所以每次最好获取一次
-     *
      */
     public static String getAppCacheSize(Context ctx,String packagename) {
 
